@@ -1,16 +1,12 @@
 package cine_sistema_reservas.modelo;
 
 import cine_sistema_reservas.excepciones.NegocioException;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.UUID;
 
-public class Funcion implements Serializable {
+public class Funcion extends EntidadConId {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
     private Pelicula pelicula;
     private Sala sala;
     private LocalDateTime inicio;
@@ -18,22 +14,18 @@ public class Funcion implements Serializable {
     private boolean activa;
 
     public Funcion(Pelicula pelicula, Sala sala, LocalDateTime inicio, double precio) throws NegocioException {
-        this.id = UUID.randomUUID().toString();
+        super();
         if (pelicula == null) {
-            throw new NegocioException("ERROR Funcion; La pelicula no puede estar vacia.");
+            throw new NegocioException("ERROR Funcion; La película no puede estar vacIa.");
         }
         if (sala == null) {
-            throw new NegocioException("ERROR Funcion; La sala no puede estar vacia.");
+            throw new NegocioException("ERROR Funcion ;La sala no puede estar vacIa.");
         }
         this.pelicula = pelicula;
         this.sala = sala;
         setInicio(inicio);
         setPrecio(precio);
         this.activa = true;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public Pelicula getPelicula() {
@@ -89,30 +81,7 @@ public class Funcion implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Funcion other = (Funcion) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
     public String toString() {
         return pelicula + " - " + sala + " - " + inicio;
     }
-
 }

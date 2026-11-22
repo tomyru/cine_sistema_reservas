@@ -1,28 +1,20 @@
 package cine_sistema_reservas.modelo;
 
 import cine_sistema_reservas.excepciones.NegocioException;
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.UUID;
 
-public class Pelicula implements Serializable {
+public class Pelicula extends EntidadConId {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
     private String titulo;
     private int duracionMinutos;
     private boolean activa;
 
     public Pelicula(String titulo, int duracionMinutos) throws NegocioException {
-        this.id = UUID.randomUUID().toString();
+        super();
         setTitulo(titulo);
         setDuracionMinutos(duracionMinutos);
         this.activa = true;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getTitulo() {
@@ -39,7 +31,7 @@ public class Pelicula implements Serializable {
 
     public void setTitulo(String titulo) throws NegocioException {
         if (titulo == null || titulo.isBlank()) {
-            throw new NegocioException("ERROR Pelicula; El título es obligatorio.");
+            throw new NegocioException("ERROR Pelicula; El titulo es obligatorio.");
         }
         this.titulo = titulo.trim();
     }
@@ -55,26 +47,8 @@ public class Pelicula implements Serializable {
         this.activa = false;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pelicula other = (Pelicula) obj;
-        return Objects.equals(this.id, other.id);
+    public void reactivar() {
+        this.activa = true;
     }
 
     @Override

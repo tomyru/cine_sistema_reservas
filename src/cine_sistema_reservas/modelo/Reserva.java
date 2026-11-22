@@ -17,30 +17,28 @@ public class Reserva implements Serializable {
     private final String codigo;
     private final Cliente cliente;
     private final Funcion funcion;
-    private List<Entrada> entradas;
+    private final List<Entrada> entradas;
     private EstadoReserva estado;
-    private LocalDateTime fechaCreacion;
-    
+    private final LocalDateTime fechaCreacion;
+
     public Reserva(String codigo, Cliente cliente, Funcion funcion, List<Entrada> entradas) throws NegocioException {
         if (codigo == null || codigo.isBlank()) {
             throw new NegocioException("ERROR Reserva; El codigo no puede estar vacio.");
         }
         if (cliente == null) {
-            throw new NegocioException("ERROR Reserva; Cliente vacio.");
+            throw new NegocioException("ERROR Reserva; Falta el cliente.");
         }
         if (funcion == null) {
-            throw new NegocioException("ERROR Reserva; Funcion vacia.");
+            throw new NegocioException("ERROR Reserva; Falta la función.");
         }
         if (entradas == null || entradas.isEmpty()) {
             throw new NegocioException("ERROR Reserva; Debe tener al menos una entrada.");
         }
+        Set<Butaca> vistas = new HashSet<>();
         for (Entrada e : entradas) {
             if (!funcion.getSala().getButacas().contains(e.getButaca())) {
                 throw new NegocioException("ERROR Reserva; La butaca " + e.getButaca() + " no pertenece a la sala.");
             }
-        }
-        Set<Butaca> vistas = new HashSet<>();
-        for (Entrada e : entradas) {
             if (!vistas.add(e.getButaca())) {
                 throw new NegocioException("ERROR Reserva; La butaca " + e.getButaca() + " está repetida.");
             }
@@ -105,11 +103,17 @@ public class Reserva implements Serializable {
         return false;
     }
 
+    /**
+     * Solo para el rollback de ReservaService: deja la reserva CONFIRMADA si
+     * falla el guardado de una cancelación. No es una operación de negocio.
+     */
+    public void restaurarConfirmada() {
+        this.estado = EstadoReserva.CONFIRMADA;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.codigo);
-        return hash;
+        return Objects.hash(codigo);
     }
 
     @Override
@@ -117,19 +121,14 @@ public class Reserva implements Serializable {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Reserva other = (Reserva) obj;
-        return Objects.equals(this.codigo, other.codigo);
+        return Objects.equals(this.codigo, ((Reserva) obj).codigo);
     }
 
     @Override
     public String toString() {
         return codigo + " - " + cliente + " - " + estado;
     }
-
 }
