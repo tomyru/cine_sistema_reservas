@@ -36,4 +36,13 @@ public class EstadoCine implements Serializable {
         return String.format("CIN-%03d", ultimoNumeroReserva);
     }
 
+    /**
+     * Solo para rollback de ReservaService: deshace el último código pedido.
+     */
+    public void devolverCodigo() {
+        if (ultimoNumeroReserva > 0) {
+            ultimoNumeroReserva--;
+        }
+    }
+
 }
