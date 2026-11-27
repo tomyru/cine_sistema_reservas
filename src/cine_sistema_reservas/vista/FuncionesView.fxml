@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.FuncionesController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <HBox spacing="10">
+        <ComboBox fx:id="comboPelicula" promptText="Película"/>
+        <ComboBox fx:id="comboSala" promptText="Sala"/>
+        <DatePicker fx:id="campoFecha" promptText="Fecha"/>
+        <TextField fx:id="campoHora" promptText="Hora (18:00)" prefWidth="100"/>
+        <TextField fx:id="campoPrecio" promptText="Precio" prefWidth="90"/>
+        <Button text="Registrar" onAction="#registrar"/>
+    </HBox>
+    <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colPelicula" text="Película"/>
+            <TableColumn fx:id="colSala" text="Sala"/>
+            <TableColumn fx:id="colFecha" text="Fecha"/>
+            <TableColumn fx:id="colHora" text="Hora"/>
+            <TableColumn fx:id="colPrecio" text="Precio"/>
+        </columns>
+    </TableView>
+</VBox>

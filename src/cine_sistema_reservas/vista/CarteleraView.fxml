@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.CarteleraController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <HBox spacing="10">
+        <ComboBox fx:id="comboPelicula" promptText="Todas las películas"/>
+        <DatePicker fx:id="campoFecha" promptText="Fecha"/>
+        <Button text="Buscar" onAction="#buscar"/>
+        <Button text="Limpiar" onAction="#limpiar"/>
+        <Button text="Reservar →" onAction="#reservar"/>
+    </HBox>
+    <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="No hay funciones para estos filtros"/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="colPelicula" text="Película"/>
+            <TableColumn fx:id="colSala" text="Sala"/>
+            <TableColumn fx:id="colFecha" text="Fecha"/>
+            <TableColumn fx:id="colHora" text="Horario"/>
+            <TableColumn fx:id="colPrecio" text="Precio"/>
+        </columns>
+    </TableView>
+</VBox>

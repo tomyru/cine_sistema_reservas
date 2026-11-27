@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.SalasController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <HBox spacing="10">
+        <TextField fx:id="campoNombre" promptText="Nombre"/>
+        <TextField fx:id="campoFilas" promptText="Filas"/>
+        <TextField fx:id="campoButacas" promptText="Butacas por fila"/>
+        <Button text="Registrar" onAction="#registrar"/>
+    </HBox>
+   <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNombre" text="Sala"/>
+            <TableColumn fx:id="colFilas" text="Filas"/>
+            <TableColumn fx:id="colButacas" text="Butacas / fila"/>
+            <TableColumn fx:id="colCapacidad" text="Capacidad"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.PeliculasController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <Button text="Desactivar / Reactivar" onAction="#cambiarEstado"/>
+    <HBox spacing="10">
+        <TextField fx:id="campoTitulo" promptText="Título"/>
+        <TextField fx:id="campoDuracion" promptText="Duración (min)"/>
+        <Button text="Registrar" onAction="#registrar"/>
+        <Button text="Editar" onAction="#editar"/>
+    </HBox>
+    <TableView fx:id="tabla">
+        <columns>
+            <TableColumn fx:id="colTitulo" text="Título"/>
+            <TableColumn fx:id="colDuracion" text="Duración"/>
+            <TableColumn fx:id="colEstado" text="Estado"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.ClienteController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <Label fx:id="encabezado" text="Cliente y entradas"/>
+    <TextField fx:id="campoNombre" promptText="Nombre y apellido"/>
+    <TextField fx:id="campoIdentificacion" promptText="Identificación"/>
+    <GridPane fx:id="filas" hgap="10" vgap="8"/>
+    <Label fx:id="total" text="Total: $0"/>
+    <HBox spacing="10">
+        <Button text="← Butacas" onAction="#volver"/>
+        <Button text="Revisar reserva →" onAction="#revisar"/>
+    </HBox>
+</VBox>

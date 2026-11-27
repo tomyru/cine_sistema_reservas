@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.ComprobanteController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <Label fx:id="titulo" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Label fx:id="detalle"/>
+    <HBox spacing="10">
+        <Button text="Ver reservas" onAction="#verReservas"/>
+        <Button text="Nueva reserva" onAction="#nuevaReserva"/>
+    </HBox>
+</VBox>

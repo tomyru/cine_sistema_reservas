@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="raiz" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cine_sistema_reservas.controlador.VentanaPrincipalController">
+    <left>
+        <VBox spacing="15" prefWidth="150">
+            <padding>
+                <Insets top="45" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Cartelera" maxWidth="Infinity" onAction="#mostrarCartelera"/>
+            <Button text="Reservas" maxWidth="Infinity" onAction="#mostrarReservas"/>
+            <Button text="Películas" maxWidth="Infinity" onAction="#mostrarPeliculas"/>
+            <Button text="Salas" maxWidth="Infinity" onAction="#mostrarSalas"/>
+            <Button text="Funciones" maxWidth="Infinity" onAction="#mostrarFunciones"/>
+        </VBox>
+    </left>
+    <center>
+        <Label fx:id="titulo" text="Sistema de reservas"/>
+    </center>
+</BorderPane>

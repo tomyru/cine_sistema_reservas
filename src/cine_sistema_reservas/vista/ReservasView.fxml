@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
+      fx:controller="cine_sistema_reservas.controlador.ReservasController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <HBox spacing="10">
+        <TextField fx:id="campoBusqueda" promptText="Código o identificación"/>
+        <Button text="Buscar" onAction="#buscar"/>
+        <Button text="Limpiar" onAction="#limpiar"/>
+        <Button text="Exportar CSV" onAction="#exportar"/>
+    </HBox>
+    <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="Sin resultados"/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="colCodigo" text="Código"/>
+            <TableColumn fx:id="colCliente" text="Cliente"/>
+            <TableColumn fx:id="colFuncion" text="Función"/>
+            <TableColumn fx:id="colEstado" text="Estado"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <Button text="Ver detalle" onAction="#verDetalle"/>
+        <Button fx:id="botonCancelar" text="Cancelar reserva" onAction="#cancelar" disable="true"/>
+    </HBox>
+    <Label fx:id="detalle"/>
+</VBox>
